@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.7.9
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 24 Feb 2017 pada 15.57
--- Versi Server: 10.1.13-MariaDB
--- PHP Version: 7.0.8
+-- Generation Time: Jul 27, 2021 at 10:03 AM
+-- Server version: 10.1.31-MariaDB
+-- PHP Version: 7.2.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -17,16 +19,16 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `cendana`
+-- Database: `imamcrud`
 --
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `admin`
+-- Table structure for table `admincrud`
 --
 
-CREATE TABLE `admin` (
+CREATE TABLE `admincrud` (
   `id` int(11) NOT NULL,
   `username` varchar(15) DEFAULT NULL,
   `password` varchar(50) DEFAULT NULL,
@@ -35,17 +37,16 @@ CREATE TABLE `admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `admin`
+-- Dumping data for table `admincrud`
 --
 
-INSERT INTO `admin` (`id`, `username`, `password`, `nama`, `foto`) VALUES
-(1, 'auwfar', 'f0a047143d1da15b630c73f0256d5db0', 'Achmad Chadil Auwfar', 'Koala.jpg'),
-(2, 'ozil', 'f4e404c7f815fc68e7ce8e3c2e61e347', 'Mesut ', 'profil2.jpg');
+INSERT INTO `admincrud` (`id`, `username`, `password`, `nama`, `foto`) VALUES
+(1, 'imamfauzy', '21232f297a57a5a743894a0e4a801fc3', 'Imam Fauzy ', 'muka_gila_2.jpg');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kelamin`
+-- Table structure for table `kelamin`
 --
 
 CREATE TABLE `kelamin` (
@@ -54,7 +55,7 @@ CREATE TABLE `kelamin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `kelamin`
+-- Dumping data for table `kelamin`
 --
 
 INSERT INTO `kelamin` (`id`, `nama`) VALUES
@@ -64,7 +65,7 @@ INSERT INTO `kelamin` (`id`, `nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kota`
+-- Table structure for table `kota`
 --
 
 CREATE TABLE `kota` (
@@ -73,7 +74,7 @@ CREATE TABLE `kota` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `kota`
+-- Dumping data for table `kota`
 --
 
 INSERT INTO `kota` (`id`, `nama`) VALUES
@@ -87,11 +88,11 @@ INSERT INTO `kota` (`id`, `nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pegawai`
+-- Table structure for table `pegawai`
 --
 
 CREATE TABLE `pegawai` (
-  `id` varchar(255) NOT NULL,
+  `id` int(11) NOT NULL,
   `nama` varchar(255) DEFAULT NULL,
   `telp` varchar(255) DEFAULT NULL,
   `id_kota` int(11) DEFAULT NULL,
@@ -101,26 +102,19 @@ CREATE TABLE `pegawai` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `pegawai`
+-- Dumping data for table `pegawai`
 --
 
 INSERT INTO `pegawai` (`id`, `nama`, `telp`, `id_kota`, `id_kelamin`, `id_posisi`, `status`) VALUES
-('10', 'Antony Febriansyah Hartono', '082199568540', 1, 1, 1, 1),
-('11', 'Hafizh Asrofil Al Banna', '087859615271', 1, 1, 1, 1),
-('12', 'Faiq Fajrullah', '085736333728', 1, 1, 2, 1),
-('3', 'Mustofa Halim', '081330493322', 1, 1, 3, 1),
-('4', 'Dody Ahmad Kusuma Jaya', '083854520015', 1, 1, 2, 1),
-('5', 'Mokhammad Choirul Ikhsan', '085749535400', 3, 1, 2, 1),
-('7', 'Achmad Chadil Auwfar', '08984119934', 2, 1, 1, 1),
-('8', 'Rizal Ferdian', '087777284179', 1, 1, 3, 1),
-('9', 'Redika Angga Pratama', '083834657395', 1, 1, 3, 1),
-('1', 'Tolkha Hasan', '081233072122', 1, 1, 4, 1),
-('2', 'Wawan Dwi Prasetyo', '085745966707', 4, 1, 4, 1);
+(231, 'Jaja Subakti', '99999', 1, 1, 1, 1),
+(444, 'Gogo', '999999', 1, 1, 1, 1),
+(21312, 'Abdul', '99999', 3, 1, 3, 1),
+(321321, 'Abdul S', '99999', 1, 1, 4, 1);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `posisi`
+-- Table structure for table `posisi`
 --
 
 CREATE TABLE `posisi` (
@@ -129,7 +123,7 @@ CREATE TABLE `posisi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `posisi`
+-- Dumping data for table `posisi`
 --
 
 INSERT INTO `posisi` (`id`, `nama`) VALUES
@@ -144,9 +138,9 @@ INSERT INTO `posisi` (`id`, `nama`) VALUES
 --
 
 --
--- Indexes for table `admin`
+-- Indexes for table `admincrud`
 --
-ALTER TABLE `admin`
+ALTER TABLE `admincrud`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -162,6 +156,12 @@ ALTER TABLE `kota`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `pegawai`
+--
+ALTER TABLE `pegawai`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `posisi`
 --
 ALTER TABLE `posisi`
@@ -172,20 +172,24 @@ ALTER TABLE `posisi`
 --
 
 --
--- AUTO_INCREMENT for table `admin`
+-- AUTO_INCREMENT for table `admincrud`
 --
-ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `admincrud`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
+
 --
 -- AUTO_INCREMENT for table `kota`
 --
 ALTER TABLE `kota`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
 --
 -- AUTO_INCREMENT for table `posisi`
 --
 ALTER TABLE `posisi`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
